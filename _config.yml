@@ -1,0 +1,43 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Configured by: Weining Duan | wn.duan@gmail.com
+
+# Site settings
+permalink: /:categories/:year/:month/:day/:title
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "LICENSE.md", "Gemfile", "Gemfile.lock"]
+title: Duan's Notes
+# ítagline: Site Tagline
+name: Weining Duan
+email: wn.duan@gmail.com
+
+# Set time zone
+timezone: Asia/Shanghai
+
+# Write an awesome description for your new site below. You can edit this
+# line in _config.yml. It will appear in your document head meta (for
+# Google search results) and in your feed.xml site description.
+# A personal blog about python, latex and structure engineering.
+description: > # this > means to ignore newlines until "baseurl:"
+  Share some personal notes here.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://wnduan.github.io" # the base hostname & protocol for your site
+twitter_username: wn_duan
+github_username:  wnduan
+
+# Build settings
+# markdown: kramdown -> already included in GitHub settings
+
+# GitHub settings
+#github: [metadata] # ? what's this for
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+gems:
+  - jekyll-coffeescript
+  - jekyll-paginate
