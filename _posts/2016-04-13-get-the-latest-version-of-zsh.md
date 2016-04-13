@@ -107,8 +107,8 @@ $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/
 ```shell
 # 从GitHub下载文件仓库至本地的 ~/.oh-my-zsh 路径下
 $ git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-＃ 拷贝 Oh My Zsh 的配置文件 .zshrc 到用户文件夹下
-＃ 注意，拷贝之前，可能需要先备份原有的（如果有的话）.zshrc 设置文件
+# 拷贝 Oh My Zsh 的配置文件 .zshrc 到用户文件夹下
+# 注意，拷贝之前，可能需要先备份原有的（如果有的话）.zshrc 设置文件
 $ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
