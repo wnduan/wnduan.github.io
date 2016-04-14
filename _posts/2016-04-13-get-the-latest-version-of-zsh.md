@@ -145,4 +145,15 @@ $ ./install.sh
 
 之后在 iTerm2 中，“Preference -> Profiles -> Text” 标签中，将两个字体都设置为 [Powerline fonts](https://github.com/powerline/fonts#powerline-fonts) 列表中的一种字体。我现在用的是 Roboto Mono for Powerline，效果还不错。
 
+#### 最后一点修饰
+现在的显示和 GitHub 上的图片的效果基本一致了，不过还有一个小问题，就是提示符的最前面还有 `user@host` 的字符，比如我的电脑就是 `dwn@dwn`。这个还是挺影响美观的，而且分散注意力。可以通过简单的设置，使其不显示。只要在 `~/.zshrc` 文件中添加 `DEFAULT_USER=` 字段，将该字段设为用户名即可：
+
+```
+DEFAULT_USER="user"
+```
+
+可以在 shell 中用 `whoami` 命令，来查看需要填写的用户名。
+
+另外，agnoster 主题的下面，建议使用 Solarize Dark 主题风格。所以应该为 iTerm2 配置建议的主题。
+
 以上就是一个很粗略的配置过程。简单记录一下。以后有什么新的相关内容再来更新和完善。
