@@ -13,6 +13,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 title: Duan's Notes
 # ítagline: Site Tagline
 name: Weining Duan
+author: Duan
 email: wn.duan@gmail.com
 
 # Set time zone
