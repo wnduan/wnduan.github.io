@@ -132,7 +132,8 @@ code {
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    // background color shoule be the same as _syntax-highlighting.scss
+    background-color: #f0f0f0; // change #eef to #f0f0f0
 }
 
 code {

@@ -230,39 +230,64 @@
 }
 
 .post-title {
-    font-size: 42px;
+    font-size: 1.8em;  /* change 42px -> 1.8em */
     letter-spacing: -1px;
     line-height: 1;
 
     @include media-query($on-laptop) {
-        font-size: 36px;
+        font-size: 1.6em;  /* change 36px -> 1.6em */
     }
 }
 
 .post-content {
     margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
+/* add support for h1 title, not recommand to use in the post however */
+    h1 {
+        font-size: 1.8em;
 
         @include media-query($on-laptop) {
-            font-size: 28px;
+            font-size: 1.6em;
+        }
+    }
+
+    h2 {
+        font-size: 1.6em;  /* change 32px -> 1.6em */
+
+        @include media-query($on-laptop) {
+            font-size: 1.4em;  /* change 28px -> 1.4em */
         }
     }
 
     h3 {
-        font-size: 26px;
+        font-size: 1.4em;  /* change 26px -> 1.4em */
 
         @include media-query($on-laptop) {
-            font-size: 22px;
+            font-size: 1.2em;  /* change 22px -> 1.2em */
         }
     }
 
     h4 {
-        font-size: 20px;
+        font-size: 1.2em;  /* change 20px -> 1.2em */
 
         @include media-query($on-laptop) {
-            font-size: 18px;
+            font-size: 1em;  /* change 18px -> 1em */
+        }
+    }
+
+/* add h5 and h6 support, but make sure use them in only in special conditons */
+    h5 {
+        font-size: 1em;  /* change 20px -> 1em */
+
+        @include media-query($on-laptop) {
+            font-size: 1em;  /* change 18px -> 1em */
+        }
+    }
+
+    h6 {
+        font-size: 1em;  /* change 20px -> 1em */
+
+        @include media-query($on-laptop) {
+            font-size: 1em;  /* change 18px -> 1em */
         }
     }
 }

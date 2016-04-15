@@ -32,6 +32,7 @@ github_username:  wnduan
 
 # Build settings
 # markdown: kramdown -> already included in GitHub settings
+highlighter: rouge # or pygments or null
 
 # GitHub settings
 #github: [metadata] # ? what's this for
@@ -39,6 +40,7 @@ kramdown:
   input: GFM
   hard_wrap: false
   syntax_highlighter: rouge
+
 gems:
   - jekyll-coffeescript
   - jekyll-paginate

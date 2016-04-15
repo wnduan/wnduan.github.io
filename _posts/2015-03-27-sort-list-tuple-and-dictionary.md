@@ -56,7 +56,7 @@ sorted("This is a test string from Andrew".split(), key=str.lower)
 
 比较通用的使用方法是用于对复合的对象进行排序，例如：
 
-{% highlight python %}
+{% highlight python linenos %}
 student_tuples = [
 ('john', 'A', 15),
 ('jane', 'B', 12),
@@ -79,7 +79,7 @@ sorted(student_tuples, key = getKey)
 
 同样，该方法也可以应用于对象的属性，例如：
 
-{% highlight python %}
+{% highlight python linenos %}
 class Student:
     def __init__(self, name, grade, age):
         self.name = name
@@ -153,7 +153,7 @@ sorted(data, key=itemgetter(0))
 
 这种排序稳定性的性质，为我们解决一些复杂的排序问题提供了便利。可以通过一系列排序步骤的组合来解决复杂排序问题。举个例子：接着上面的学生信息的问题，
 
-{% highlight python %}
+{% highlight python linenos %}
 student_tuples = [
 ('john', 'A', 15),
 ('jane', 'B', 12),
