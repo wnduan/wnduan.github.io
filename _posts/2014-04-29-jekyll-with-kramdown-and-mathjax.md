@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "利用MathJax和kramdown在Jekyll站点中显示公式"
 description: ""
 category:

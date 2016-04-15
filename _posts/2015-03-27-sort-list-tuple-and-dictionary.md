@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "如何用 Python 内置的 sort() 函数排序"
 description: ""
 category:

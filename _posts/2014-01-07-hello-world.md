@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "世界，你好 / Hello World"
 description: "first post"
 category:

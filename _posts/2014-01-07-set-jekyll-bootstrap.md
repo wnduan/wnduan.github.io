@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "配置 Jekyll Bootstrap"
 description: "建立站点的过程"
 category:
