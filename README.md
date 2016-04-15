@@ -9,17 +9,21 @@ I'd like to make it a simple and clean one. So everything here starts from runni
 
 ## Updates
 
-2016-04-15:| add an {% elsif %} branch in \<header\> of post.html. the control sequence is if the author name is given in the post as page.author display it.else if the author name is defined in `_config.yml` file display it. so we had a global author name.
-  | add an author name to `_config.yml` file as `author: Duan`
-  | set line numbers for code using {% highlight <lang> linenos %}, while the code using code fence "\`\`\`" remain without linenumber.
-2016-04-13:| published new post "2016-04-13-get-the-latest-version-of-zsh"
-2016-04-12:| set up the config file
-           | change background color
-           | change the font size of post title in index Page
-           | change the magrin of post title in index Page
-           | add mathjax line to head.html
-           | add copyright and host lines at the bottom
-2016-04-07:| build the site locally.
+- 2016-04-15:
+  - add an {% elsif %} branch in \<header\> of post.html. the control sequence is if the author name is given in the post as page.author display it.else if the author name is defined in `_config.yml` file display it. so we had a global author name.
+  - add an author name to `_config.yml` file as `author: Duan`
+  - set line numbers for code using \{% highlight <lang> linenos %\}, while the code using code fence "\`\`\`" remain without linenumber.
+- 2016-04-13:
+  - published new post "2016-04-13-get-the-latest-version-of-zsh"
+- 2016-04-12:
+  - set up the config file
+  - change background color
+  - change the font size of post title in index Page
+  - change the magrin of post title in index Page
+  - add mathjax line to head.html
+  - add copyright and host lines at the bottom
+- 2016-04-07:
+  - build the site locally.
 
 
 Under construction and configuration...
