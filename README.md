@@ -15,6 +15,7 @@ I'd like to make it a simple and clean one. So everything here starts from runni
   - Change background color for code blocks.
   - Set line numbers for code using \{% highlight <lang> linenos %\}, while the code using code fence "\`\`\`" remain without line number. With reference to [minh's solution](http://www.minh.io/blog/2015/06/28/jekyll-line-numbers/)
   - Changed the font-size of `Posts` part in `_layout.sass`.
+  - Add Disqus teatures. With reference to [Sechter's solution](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html)
 - 2016-04-13:
   - Published new post "2016-04-13-get-the-latest-version-of-zsh"
 - 2016-04-12:
