@@ -1,6 +1,6 @@
 ---
 layout: post
-comment: true
+comments: true
 title: "网件 Netgear WNDR4300 V1 刷机和设置"
 date: 2016-08-06 00:35:00 +0800
 description: ""
