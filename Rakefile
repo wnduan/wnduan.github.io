@@ -34,7 +34,7 @@ task :post do
   open(filename, 'w') do |post|
     post.puts "---"
     post.puts "layout: post"
-    post.puts "comment: true"
+    post.puts "comments: true"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts "date: #{fulltime}"
     post.puts 'description: ""'
