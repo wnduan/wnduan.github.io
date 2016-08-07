@@ -20,9 +20,9 @@ tags: [jekyll, kramdown, MathJax]
 
 参考上面的内容，其实很好实现，只需要在站点的 ~~`_layouts/default`~~ `_includes/head.html` 文件中添加下面的代码：
 
-{% highlight html %}
+```html
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-{% endhighlight %}
+```
 
 这样就可以了。比如现在，就可以轻松的实现下面的公式：
 

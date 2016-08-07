@@ -11,9 +11,9 @@ tags: [python, sort]
 
 对序列的或是集合中的元素进行排序是很常见的问题。Python提供了内置的`sorted()`函数，以及为list对象提供的`list.sort()`方法。函数的格式及参数如下：
 
-{% highlight python %}
+```python
 sorted(iterable, cmp, key, reverse)
-{% endhighlight %}
+```
 
 其中，*iterable* 是用于排序的集合，可以是list、tuple、dictionary也可以是其他的可以循环调用的对象。*cmp*, *key* 和 *reverse* 是三个可选参数。
 
@@ -29,18 +29,18 @@ sorted(iterable, cmp, key, reverse)
 
 进行一个升序的排序非常简单，只要调用上述的 `sorted()` 函数，函数将会返回一个新的已经排序好的list：
 
-{% highlight python %}
+```python
 sorted([5, 2, 3, 1, 4]) # [1, 2, 3, 4, 5]
-{% endhighlight %}
+```
 
 对于list对象还可以使用 `list.sort()` 方法。因为list是可变的（mutable），调用 `list.sort()` 方法，将直接改变list的值为排序后的结果，方法将会返回 `None` 作为返回值。通常还是建议使用 `sorted()` 函数，以避免犯错。
 
 另外，`sorted()` 函数还可以用于其他可循环迭代的集合，如：
 
-{% highlight python %}
+```python
 sorted({1:'D',2:'B',3:'B',4:'E',5:'A'})
  # [1, 2, 3, 4, 5]
-{% endhighlight %}
+```
 
 ## Key 函数
 
@@ -48,16 +48,16 @@ sorted({1:'D',2:'B',3:'B',4:'E',5:'A'})
 
 例如，有一个字母大小写不敏感的排序问题：
 
-{% highlight python %}
+```python
 sorted("This is a test string from Andrew".split(), key=str.lower)
  # ['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
-{% endhighlight %}
+```
 
 `key` 参数的输入值应该是函数名，该函数接受一个参数，并且返回一个用于排序的值。这个方法运算速度快，因为key所指定的函数对于每一个输入值仅调用一次。
 
 比较通用的使用方法是用于对复合的对象进行排序，例如：
 
-{% highlight python linenos %}
+```python
 student_tuples = [
 ('john', 'A', 15),
 ('jane', 'B', 12),
@@ -66,21 +66,21 @@ student_tuples = [
 sorted(student_tuples, key=lambda student: student[2])
  # sort by age
  # [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
-{% endhighlight %}
+```
 
 上面，用到了 `lambda` 表达式，同样的功能也可以用以下形式来实现：
 
-{% highlight python %}
+```python
 def getKet(item):
     return item[2]
 sorted(student_tuples, key = getKey)
-{% endhighlight %}
+```
 
 显然还是采用 `lambda` 更加简洁明了。
 
 同样，该方法也可以应用于对象的属性，例如：
 
-{% highlight python linenos %}
+```python
 class Student:
     def __init__(self, name, grade, age):
         self.name = name
@@ -98,7 +98,7 @@ Student('dave', 'B', 10),
 sorted(student_objects, key=lambda student: student.age)
  # sort by age
  # [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
-{% endhighlight %}
+```
 
 ## operator 模块提供的函数
 
@@ -106,35 +106,35 @@ sorted(student_objects, key=lambda student: student.age)
 
 为了，使用这两个函数，需要将他们从 `operator` 模块中引用过来：
 
-{% highlight python %}
+```python
 from operator import itemgetter, attrgetter
-{% endhighlight %}
+```
 
 用法如下：
 
-{% highlight python %}
+```python
 sorted(student_tuples, key=itemgetter(2))
  # [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
 sorted(student_objects, key=attrgetter('age'))
  # [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
-{% endhighlight %}
+```
 
 这两个函数的好处是，他们还可以支持 *多重排序* ，例如首先按成绩，再按年龄进行排序：
 
-{% highlight python %}
+```python
 sorted(student_tuples, key=itemgetter(1,2))
  # [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
 sorted(student_objects, key=attrgetter('grade', 'age'))
  # [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
-{% endhighlight %}
+```
 
 另外，Python 2.5 后的版本中， `operator` 模块还提供了 `operator.methodcaller()` 函数，该函数将会以固定的参数调用执行对象的方法。例如， 利用字符串对象的 `str.count()` 方法可以通过计算感叹号（!）的数量，来对信息按照重要程度来排序：
 
-{% highlight python %}
+```python
 messages = ['critical!!!', 'hurry!', 'standby', 'immediate!!']
 sorted(messages, key=methodcaller('count', '!'))
  # ['standby', 'hurry!', 'immediate!!', 'critical!!!']
-{% endhighlight %}
+```
 
 ## 升序和降序
 
@@ -146,15 +146,15 @@ sorted(messages, key=methodcaller('count', '!'))
 
 从 Python 2.2 开始，排序就都是稳定的。
 
-{% highlight python %}
+```python
 data = [('red', 1), ('blue', 1), ('red', 2), ('blue', 2)]
 sorted(data, key=itemgetter(0))
  # [('blue', 1), ('blue', 2), ('red', 1), ('red', 2)]
-{% endhighlight %}
+```
 
 这种排序稳定性的性质，为我们解决一些复杂的排序问题提供了便利。可以通过一系列排序步骤的组合来解决复杂排序问题。举个例子：接着上面的学生信息的问题，
 
-{% highlight python linenos %}
+```python
 student_tuples = [
 ('john', 'A', 15),
 ('jane', 'B', 12),
@@ -174,17 +174,17 @@ Student('john', 'A', 15),
 Student('jane', 'B', 12),
 Student('dave', 'B', 10),
 ]
-{% endhighlight %}
+```
 
 每个学生有 *姓名*, *成绩* 和 *年龄* 三个信息，如果需要按照 *成绩* 的降序和 *年龄* 的升序来进行排序，那么我们可以首先对 *年龄* 按升序进行一次排序，然后再对 *成绩* 按照降序进行第二次排序。由于Python排序的稳定性，通过上述两个步骤就可以得到最终的结果，具体实施代码如下：
 
-{% highlight python %}
+```python
 s = sorted(student_tuples, key = itemgetter(2))     # sort on secondary key
 sorted(s, key = itemgetter(1), reverse = True)      # now sort on primary key, descending
 
 s = sorted(student_objects, key=attrgetter('age'))     # sort on secondary key
 sorted(s, key=attrgetter('grade'), reverse=True)       # now sort on primary key, descending
-{% endhighlight %}
+```
 
 ---
 2015-04

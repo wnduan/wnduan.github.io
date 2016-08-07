@@ -68,32 +68,32 @@ $ rake post title="Hello World"
 
 同上，执行下面的命令，即可创建一个about页面
 
-{% highlight bash %}
+```bash
 $ rake page name="about.md"
-{% endhighlight %}
+```
 
 创建子页面：
 
-{% highlight bash %}
+```bash
 $ rake page name="pages/about.md"
-{% endhighlight %}
+```
 
 创建一个拥有好看的路径的页面：
 
-{% highlight bash %}
+```bash
 $ rake page name="pages/about"
 # 这种方式将会建立 ./pages/about/index.html 文件
-{% endhighlight %}
+```
 
 ## 发布 ## {#h4}
 
 只需执行下述命令，将新的内容推送到GitHub的Repository中
 
-{% highlight bash %}
+```bash
 $ git add .
 $ git commit -m "Add new content"
 $ git push origin master
-{% endhighlight %}
+```
 
 
 ## 初始页面的修改  ## {#h5}
