@@ -7,8 +7,6 @@ description: ""
 categories: 
 tags: []
 ---
-author: wnduan ｜ date: 2016-09-04
-
 ## 0. 免责声明
 
 * 本设置**非官方推荐**，只是本人的个人经验，希望能给需要的同学一个启发。
