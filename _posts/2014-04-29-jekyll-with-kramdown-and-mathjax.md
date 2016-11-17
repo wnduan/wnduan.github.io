@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "利用MathJax在Jekyll站点中显示公式"
+title: "利用 MathJax 在 Jekyll 站点中显示公式"
 description: ""
 category:
 tags: [jekyll, kramdown, MathJax]
@@ -54,5 +54,3 @@ Jekyll 的第二个特点是，它支持使用 Liquid 语言。引入 Liquid 语
 Jekyll 自动创建的站点的所有页面都是基于 `_layout/default.html` 生成的，包括我们需要显示公式的文章页面。而 `default.html` 会使用 `{% include head.html %}` 引入 `_includes/head.html` 的内容。
 
 因此，基于以上描述，只要将 MathJax 提供的代码片段放在 `_includes/head.html` 中即可。
-
-啰里八嗦了一大堆，不过也算把机理解释了一下。希望描述的还算清楚。

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "在Outlook中配置Gmail账户"
+title: "在 Outlook 中配置 Gmail 账户"
 date: 2015-09-24 20:25:11 +0800
 description: ""
 category:
