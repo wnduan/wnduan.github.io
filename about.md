@@ -4,8 +4,10 @@ title: About
 permalink: /about/
 ---
 
+Hi,
+
 I'm a PhD student major in civil engineering.
 
-Interested in python, LaTeX.
+I'm interested in python and LaTeX.
 
-This site provides personal notes on the above subjects.
+This is a personal blog in Chinese, just take some notes on things I'm interested.
