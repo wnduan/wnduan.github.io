@@ -9,6 +9,10 @@ I'd like to make it a simple and clean one. So everything here starts from runni
 
 ## Updates
 
+- 2016-11-17:
+  - Add an "Archive" page. With reference to [reyhan.org](http://reyhan.org/2013/03/jekyll-archive-without-plugins.html) and [Sarathlal N](http://sarathlal.com/monthly-archive-jekyll-without-plugin).
+  - Inorder to put Archive after About in navigation bar with the header, made some change to default `header.html` file.
+
 - 2016-04-15:
   - Add an {% elsif %} branch in \<header\> of post.html. The control sequence is: if the author name is given in the post as page.author then display `page.author`. Else if the author name is defined in `_config.yml` file display `site.author`. So we had a global author name while we could control the author name separately.
   - Add an author name to `_config.yml` file with `author: Duan`.
@@ -17,8 +21,10 @@ I'd like to make it a simple and clean one. So everything here starts from runni
   - Changed the font-size of `Posts` part in `_layout.sass`.
   - Add Disqus teatures. With reference to [Sechter's solution](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html)
   - Set footer background-color #fdfdfd -> #e0e0e0 
+
 - 2016-04-13:
   - Published new post "2016-04-13-get-the-latest-version-of-zsh"
+
 - 2016-04-12:
   - Set up the config file
   - Change background color
@@ -26,6 +32,7 @@ I'd like to make it a simple and clean one. So everything here starts from runni
   - Change the magrin of post title in index Page
   - Add mathjax line to head.html
   - Add copyright and host lines at the bottom
+
 - 2016-04-07:
   - Build the site locally.
 
