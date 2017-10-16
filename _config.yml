@@ -41,6 +41,7 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-gems:
+#gems:
+plugins:
   - jekyll-coffeescript
   - jekyll-paginate
