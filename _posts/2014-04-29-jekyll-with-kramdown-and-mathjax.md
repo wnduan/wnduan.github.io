@@ -7,6 +7,16 @@ category:
 tags: [jekyll, kramdown, MathJax]
 ---
 
+### Warning! \[Update 2017-10\]
+这篇文章关于 MathJax 设置的部分细节已经过时。MathJax 已于 2017 年 4 月停止了其 CDN 服务。需要改用其他 CDN 服务。具体内容参考:
+- [官方消息](https://www.mathjax.org/cdn-shutting-down/)
+- [官方文档](http://docs.mathjax.org/en/latest/start.html) - Getting Started
+
+我将抽空重新写篇关于 Jekyll 和 MathJax 相关设置的文章。
+
+-------------
+
+
 在学习 [kramdown](http://kramdown.gettalong.org/index.html) 的过程中，发现他可以支持 LaTeX 数学公式的显示，对于科技写作来说这无疑是一大福音。所以，迫不及待的尝试一下显示效果。可是，按照 kramdown 和 LaTeX 的语法规则编写了数学公式却完全没有显示。
 
 > Update(2016-04)  
@@ -49,8 +59,8 @@ Jekyll 的第二个特点是，它支持使用 Liquid 语言。引入 Liquid 语
 
 这些就是用 Liquid 语言将 `head.html`, `header.html`, `footer.html` 包含到 `default.html` 文件中的用法。Jekyll 生成站点时，{% raw %}`{% include <filename> %}`{% endraw %} 语句会在 `_includes` 文件夹中查找到被包含的文件，然后将其插入的相应的位置。
 
-回到本文讨论的内容，如何为网页添加 MathJax 显示数学公式。[MathJax Getting Start](http://docs.mathjax.org/en/latest/start.html) 告诉我们，只需要将前面提到的那段 html 代码放到需要使用 MathJax 生成公式的页面的 `<head></head>` 标签内，这样在浏览器加载页面时就会通过 MathJax 的 CDN 将公式显示出来。
+回到本文讨论的内容，如何为网页添加 MathJax 显示数学公式。[MathJax Getting Start](http://docs.mathjax.org/en/latest/start.html) 告诉我们，只需要将前面提到的那段 html 代码放到需要使用 MathJax 生成公式的页面的 `<head>` 标签内，这样在浏览器加载页面时就会通过 MathJax 的 CDN 将公式显示出来。
 
-Jekyll 自动创建的站点的所有页面都是基于 `_layout/default.html` 生成的，包括我们需要显示公式的文章页面。而 `default.html` 会使用 `{% include head.html %}` 引入 `_includes/head.html` 的内容。
+Jekyll 自动创建的站点的所有页面都是基于 `_layout/default.html` 生成的，包括我们需要显示公式的文章页面。而 `default.html` 会使用 {% raw %}`{% include head.html %}`{% endraw %} 引入 `_includes/head.html` 的内容。
 
 因此，基于以上描述，只要将 MathJax 提供的代码片段放在 `_includes/head.html` 中即可。
