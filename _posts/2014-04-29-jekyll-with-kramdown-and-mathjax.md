@@ -12,7 +12,7 @@ tags: [jekyll, kramdown, MathJax]
 - [官方消息](https://www.mathjax.org/cdn-shutting-down/)
 - [官方文档](http://docs.mathjax.org/en/latest/start.html) - Getting Started
 
-我将抽空重新写篇关于 Jekyll 和 MathJax 相关设置的文章。
+**我的新文章：**[在 Jekyll 中使用 MathJax 显示公式]({% post_url 2017-10-24-jekyll-with-mathjax %})
 
 -------------
 

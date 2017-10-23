@@ -11,19 +11,24 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
   <!-- MathJax Support -->
   <!-- Personal Configuration -->
+  <!-- Aviable math fonts: "TeX","STIX","Asana-Math", "Gyre-Pagella", 
+       "Gyre-Termes", "Latin-Modern", "Neo-Euler" -->
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(', '\\)']]},
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(', '\\)']],
+      processEscapes: true
+      },
     "HTML-CSS": {
-      availableFonts: ["TeX","STIX","Asana-Math"],
-      preferredFont: "STIX",
-      webFont: "STIX-web",
+      availableFonts: [],
+      preferredFont: null,
+      webFont: "STIX",
       imageFont: null
     }
   });
   </script>
-  <!-- Use scnjs as CDN providor -->
+  <!-- Use cdnjs as CDN providor -->
   <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML">
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
   </script>
 </head>
