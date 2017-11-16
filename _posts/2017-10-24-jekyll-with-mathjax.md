@@ -5,12 +5,12 @@ title: "在 Jekyll 中使用 MathJax 显示数学公式"
 date: 2017-10-19 04:42:14 +0800
 description: ""
 categories: 
-tags: [jekyll,mathjax,latex,math]
+tags: [jekyll,mathjax,latex,math,数学,公式]
 ---
 
 在 2014 年写过一篇文章：[利用 MathJax 在 Jekyll 站点中显示公式]({{site.baseurl}}{% post_url 2014-04-29-jekyll-with-kramdown-and-mathjax %})，当时就是记录了配置过程中遇到一些问题，实现了在 Jekyll 站点中显示数学公式的目的。结果弄好之后就再也没有正经写过技术类的文章，连一般的笔记类博文都很少写。
 
-最近，发布新文章的时候发现了一个警告信息，说 [MathJax](https://www.mathjax.org/) 停止了 CDN 服务。于是去官网看，果然如此。不过对于对于用户来说影响不大，官网推荐了其他可用的 CDN 服务商，只要按照文档中新的配置信息修改一下就可以了。
+最近，发布新文章的时候发现了一个警告信息，说 [MathJax](https://www.mathjax.org/) 停止了 CDN 服务。于是去官网看，果然如此。不过对于用户来说影响不大，官网推荐了其他可用的 CDN 服务商，只要按照文档中新的配置信息修改一下就可以了。
 
 这篇文章，就是按照新的官方文档把配置的方法再重写一遍。另外，增加一点关于 MathJax 的配置文件的内容。
 

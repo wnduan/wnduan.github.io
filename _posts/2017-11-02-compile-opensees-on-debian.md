@@ -5,7 +5,7 @@ title: "在 Debian/Ubuntu 系统下编译 OpenSees"
 date: 2017-11-02 23:57:41 +0800
 description: ""
 categories: 
-tags: [debian, opensees, linux]
+tags: [debian,opensees,linux,系统,编译]
 ---
 
 ## 我的系统环境

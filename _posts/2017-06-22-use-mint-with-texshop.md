@@ -5,7 +5,7 @@ title: "mint 包及 TeXShop 的相关设置"
 date: 2017-06-22 14:25:25 +0800
 description: ""
 categories: 
-tags: [latex]
+tags: [latex,texshop,代码高亮]
 ---
 
 使用 LaTeX 写作时，常常遇到的一个问题就是代码部分的格式化和语法高亮。最原始的做法是使用 `verbatim` 抄录环境，更加正式的方式是使用 `listings` 环境，在导言区使用 `usepackage{listings}`，然后经过设置就可以使用该环境来格式化和高亮代码，如：

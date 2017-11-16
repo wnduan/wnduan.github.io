@@ -5,7 +5,7 @@ title: "为 OpenWrt 路由器设置免密码登录的 SSH 连接"
 date: 2016-11-04 08:53:53 +0800
 description: ""
 categories: 
-tags: [openwrt, ssh]
+tags: [openwrt,ssh]
 ---
 
 官方的 OpenWrt 系统可以通过 SSH 连接登录。但是每次登陆都输入一遍密码也很不方便。SSH 其实本来就可以通过在服务器端保存本地的公钥，实现免密码登录。配置好之后还可以在路由器上禁用密码登录选项，有助于提高安全性。
