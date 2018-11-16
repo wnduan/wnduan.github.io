@@ -77,6 +77,42 @@ abaqus verify -user_std
 ```
 就可以看到 Abaqus/Standard 的用户子程序验证 PASS 了。也可以使用 Abaqus Verification 程序运行完整的测试和验证。
 
+## 尾巴
+由于我使用的不是官方推荐的环境，所以在 Verification 的过程中还是有遇到其他的问题。`C++ make` 模块的验证无法通过。检查 `cpp_make.log` 文件，发现是编译过程中头文件的路径错误：
+```
+C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\compiler\include\stdint.h(40): error C1803: Cannot open include file: '../../vc/include/stdint.h': No such file or directory
+```
+可以看到，这里头文件 `stdint.h` 第 40 行引用了另一个 `stdint.h` 头文件，但是路径错误。网上搜索一番，发现是 Visual 2017 中更改了许多文件的路径，导致这里的引用失败。
+
+### 查找 VC 的路径
+Micorsoft 提供了一个命令行工具 `vswhere` 可以帮助查找和判断当前 Visual Studio 2017 的环境。现在需要查找 VC 的安装位置，在 PowerShell 中使用：
+```
+> vswhere -property installationPath
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
+```
+前往给出的路径，可以看到有个 VC 文件夹，这就是 Visual C++ 的位置，上面需要引用的头文件就在这里，当然还是最要寻找一番。实际路径是：
+```
+.../VC/Tools/MSVC/14.16.27203/include/stdint.h
+```
+
+### 解决问题
+也没什么好办法，只能来电 dirty hack，直接去 `IntelSWTools\...\include\stdint.h` 文件，找到错误的位置：
+```c
+#include __TMP_STRING(__TMP_PASTE2(__MS_VC_INSTALL_PATH,/include/stdint.h))
+```
+这里显然就是要修改一下 `__MS_VC_INSTALL_PATH` 的定义就可以了，网上找几行可以看到这个宏定义，将这行注释掉，并在下面添加新的定义如下：
+```c
+#ifndef __MS_VC_INSTALL_PATH
+// #define __MS_VC_INSTALL_PATH ../../vc <- 原有定义前面加 '//' 注释掉，并添加下面一行新的定义
+#define __MS_VC_INSTALL_PATH C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023
+#endif
+```
+之后管理员权限保存，在 Abaqus Command 中使用命令：
+```
+abaqus verify -make
+```
+可以看到问题解决。至此，Verification 中所有问题解决。
+
 ## 参考资料
 
 [Linking Abaqus2017 and Intel Parallel Studio XE2016 (Visual Fortran) in Windows 10 X64](https://www.researchgate.net/profile/Petri_Tanska/publication/313924098_Linking_ABAQUS_2017_and_Intel_Parallel_Studio_XE2016_Visual_Fortran_in_Windows_10_x64/links/58b003efaca2725b5411b020/Linking-ABAQUS-2017-and-Intel-Parallel-Studio-XE2016-Visual-Fortran-in-Windows-10-x64.pdf?_sg%5B0%5D=KjIj-PyDmhfyQGQnKwnPSCLKjgVBEsYTA5xTnPcuBNGoIV33gV5hNCcQ-92oN5vForOsoo9DEfXDTy8GJZ3Meg.dwRkdpkT1N8tAROQb8HjyI39OOXnMaAwF_mMmY05pdiTQWGIcs3egoRkB2eR8pfU1IRuD2-za57QD99z557TQA&_sg%5B1%5D=5tfjgGqq-YupCCNJVIJG6o306qTbAD6BIBVn3ghIr5piyuSZYDhtWhbvQ9AggmX15xUCmDLhcvo1CVRj0hUnNbMsTnNKu29hPADSLJPXFZDX.dwRkdpkT1N8tAROQb8HjyI39OOXnMaAwF_mMmY05pdiTQWGIcs3egoRkB2eR8pfU1IRuD2-za57QD99z557TQA&_iepl=)
