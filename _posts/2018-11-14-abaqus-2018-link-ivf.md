@@ -12,7 +12,7 @@ tags: []
 - 软件版本：
     - Abaqus 2018
     - Visual Studio 2017 Community + Visual C++ 14.16.27023.1
-    - Intel Parallel Studio XE 2018 + Fortran Compiler 19.0
+    - Intel Parallel Studio XE 2019 + Fortran Compiler 19.0
 
 ## 选择与 Abaqus 匹配的编译环境
 在 Abaqus 官网的 [SIMULIA Platforms & Configuration Support](https://www.3ds.com/support/hardware-and-software/simulia-system-information/) 页面可以查看各个版本的系统需求，和测试信息。官方使用的测试环境可以在相应的 Test Configurations 页面查看，其中就有编译器的相关信息。例如 Abaqus 2018 在 Windows 10 Enterprise 系统下的 [Test Configurations](https://www.3ds.com/fileadmin/PRODUCTS/SIMULIA/PDF/guide/test-configurations-abaqus-2018-windows-10.pdf) 中有如下信息：
