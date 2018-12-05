@@ -14,7 +14,7 @@ tags: [abaqus,visual studio,intel parallel studio]
     - Visual Studio 2017 Community + Visual C++ 14.16.27023.1
     - Intel Parallel Studio XE 2019 + Fortran Compiler 19.0
 
-## 选择与 Abaqus 匹配的编译环境
+## 1 选择与 Abaqus 匹配的编译环境
 在 Abaqus 官网的 [SIMULIA Platforms & Configuration Support](https://www.3ds.com/support/hardware-and-software/simulia-system-information/) 页面可以查看各个版本的系统需求，和测试结果。官方使用的测试环境可以在相应的 Test Configurations 页面查看，其中就有编译器的相关内容。例如 Abaqus 2018 在 Windows 10 Enterprise 系统下的 [Test Configurations](https://www.3ds.com/fileadmin/PRODUCTS/SIMULIA/PDF/guide/test-configurations-abaqus-2018-windows-10.pdf) 中有如下信息：
 
 ```text
@@ -27,13 +27,13 @@ Fortran Compiler: Intel Fortran Compiler 16.0
 
 建议使用官方测试通过的环境，这样安装配置之后一般不会出现各种奇怪的问题。我自己是尝试了一个比较新的组合，目前基本的测试和验证是能够通过，不过不知道以后是不是会遇到问题。
 
-### 安装顺序
+### 1.1 安装顺序
 Visual Studio -> Intel Parallel Studio -> Abaqus
 
-## 安装完成后的配置
+## 2 安装完成后的配置
 安装完成之后可以使用 Abaqus Verification 先测试一下程序中的各个模块是否能正常使用。如果某些模块验证失败，则应查看一下 log 文件，检查失败的原因。为了编译用户子程序，Abaqus 在运行前需要调用 `ifortvars.bat` 设置正确的编译环境变量，通常用户子程序相关模块验证失败就是因为无法正确调用 `ifortvars.bar` 文件造成的。对于，这类问题可以尝试进行以下设置。
 
-### 在 Windows 10 中设置系统变量
+### 2.1 在 Windows 10 中设置系统变量
 这个步骤是在下面参考的第 [1] 个设置中提到的，但是似乎并不必要，因为下一步的设置中已经直接使用完整路径来调用所需的 `.bat` 文件。所以**建议这一步可以直接跳过**。在正确安装配置的情况下，Intel 提供的用于设置 Fortran 编译环境的 `ifortvars.bat` 文件能够正确调用相应的 `vcvars` 批处理文件。
 
 - 找到 `vcvars64.bat` 文件，Visual Studio 2015 的位于：
@@ -50,7 +50,7 @@ Visual Studio -> Intel Parallel Studio -> Abaqus
   ```
 - 将上面两个文件的路径添加到系统（或用户）的 Path 变量中。
 
-### Abaqus CAE/Command/Verification 启动时载入 Fortran 编译器
+### 2.2 Abaqus CAE/Command/Verification 启动时载入 Fortran 编译器
 这一步是设置程序的启动方式选项，需要设置 Abaqus CAE, Command, 和 Verification 这三个程序。具体步骤：
 
 - 在开始菜单找到 Abaqus Command 的图标，右击之后选择「更多」>「打开所在文件夹」，这里也有其他程序的图标。或者直接前往：
@@ -65,7 +65,7 @@ Visual Studio -> Intel Parallel Studio -> Abaqus
 - 然后设置 Abaqus CAE 的启动方式，类似地，右击 Abaqus CAE 的图标，选择「属性」在「目标」中的原有设置 `C:\SIMULIA\CAE\2018\win_b64\resources\install\cae\launcher.bat cae || pause` 前面添加同样的代码，并保存。
 - 最后 Abaqus Verification 也是一样，在原有设置前面添加上述代码。
 
-### 检查相关信息
+### 2.3 检查相关信息
 完成上述两步之后，子程序模块应该就可以正确运行了。可以使用 Abaqus Command 检查当前的系统环境和配置，双击打开 Abauqs Command 命令窗口，输入
 ```cmd
 abaqus info=system
@@ -83,14 +83,14 @@ abaqus verify -user_std
 ```
 就可以看到 Abaqus/Standard 的用户子程序验证 PASS 了。也可以使用 Abaqus Verification 程序运行完整的测试和验证。
 
-## 尾巴
+## 3 尾巴
 由于我使用的不是官方推荐的环境，所以在 Verification 的过程中还是有遇到其他的问题。`C++ make` 模块的验证无法通过。检查 `cpp_make.log` 文件，发现是编译过程中头文件的路径错误：
 ```
 C:\Program Files (x86)\IntelSWTools\compilers_and_libraries\windows\compiler\include\stdint.h(40): error C1803: Cannot open include file: '../../vc/include/stdint.h': No such file or directory
 ```
 可以看到，这里头文件 `stdint.h` 第 40 行引用了另一个 `stdint.h` 头文件，但是路径错误。网上搜索一番，发现是 Visual Studio 在 2017 版中更改了许多文件的路径，而 Intel Parallel 中的某些定义又没有考虑到这些问题，应该说是 Intel Parallel Studio 中的 bug 了。
 
-### 查找 VC 的路径
+### 3.1 查找 VC 的路径
 Micorsoft 提供了一个命令行工具 `vswhere` 可以帮助查找和判断当前 Visual Studio 2017 的环境。现在需要查找 VC 的安装位置，在 PowerShell 中使用：
 ```
 > vswhere -property installationPath
@@ -101,7 +101,7 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
 .../VC/Tools/MSVC/14.16.27203/include/stdint.h
 ```
 
-### 解决问题
+### 3.2 解决问题
 也没什么好办法，只能来点 dirty hack，直接修改出错的文件。去 `IntelSWTools\...\include\stdint.h` 文件，找到错误的位置：
 ```c
 #include __TMP_STRING(__TMP_PASTE2(__MS_VC_INSTALL_PATH,/include/stdint.h))
